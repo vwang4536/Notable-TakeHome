@@ -13,7 +13,7 @@ function transcriptionTextParser(str) {
   if (!str.length) return '';
 
   // create an obj to store all possible numbers
-  let numberObj = {
+  const numberObj = {
     'one': 1,
     'two': 2,
     'three': 3,
@@ -37,17 +37,17 @@ function transcriptionTextParser(str) {
     if (strArr[i].startsWith('Number')) {
       
       	// split the current sentence
-        let splitStr = strArr[i].split(' ');
+        let splitSentence = strArr[i].split(' ');
       
       	// remove 'Number' from the sentence
-      	splitStr.shift();
+      	splitSentence.shift();
 	
       	// if word next to 'Number' is a number parse and change it to a number
-      	if (numberObj[splitStr[0]]) {
+      	if (numberObj[splitSentence[0]]) {
           // grab the corresponding number from the numberObj
-          let number = numberObj[splitStr[0]];
+          let number = numberObj[splitSentence[0]];
           // change the word to Number
-          splitStr[0] = `${number}.`
+          splitSentence[0] = `${number}.`
           
           // set count to be current number
           count = number;
@@ -56,13 +56,13 @@ function transcriptionTextParser(str) {
           // increment count
           count += 1;
           // set the word 'next' to be current count 
-          splitStr[0] = `${count}.`;
+          splitSentence[0] = `${count}.`;
         }
       // capitalize first letter of next word
-      splitStr[1] = capitalizeFirstLetter(splitStr[1]);
+      splitSentence[1] = capitalizeFirstLetter(splitSentence[1]);
       
       // set current sentence in original arr to be updated sentence
-      strArr[i] = splitStr.join(' ');
+      strArr[i] = splitSentence.join(' ');
     } 
   }
   
