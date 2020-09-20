@@ -47,7 +47,7 @@ function transcriptionTextParser(str) {
           // grab the corresponding number from the numberObj
           let number = numberObj[splitSentence[0]];
           // change the word to Number
-          splitSentence[0] = `${number}.`
+          splitSentence[0] = `${number}.`;
           
           // set count to be current number
           count = number;
