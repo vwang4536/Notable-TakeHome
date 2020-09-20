@@ -3,7 +3,7 @@ This repo contains a function that parses through transcription text and returns
 
 Thank you for this opportunity! :)
 # How To Use
-- Git clone this repository (https://github.com/vwang4536/Notable-TakeHome)
+- Git clone this repository (https://github.com/vwang4536/Notable-TakeHome) or download the zip package
 ```
 git clone https://github.com/vwang4536/Notable-TakeHome
 ```
