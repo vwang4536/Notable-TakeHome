@@ -1,11 +1,17 @@
-let str = `Patient presents today with several issues. Number nine BMI has increased by 10% since their
+let str = `Patient presents today with several issues. Number one BMI has increased by 10% since their
 last visit. Number next patient reports experiencing dizziness several times in the last two
 weeks. Number next patient has a persistent cough that hasn’t improved for last 4 weeks.`
 
-function transcriptionTextParser(string) {
+function transcriptionTextParser(str) {
   // Input: Transcription text
   // Output: Transformed text
-  
+
+  // edge case: if input is not a string return 'Input is not a string'
+  if (typeof str !== 'string') return 'Input is not a string!';
+
+  // edge case: if string is empty return empty string
+  if (!str.length) return '';
+
   // create an obj to store all possible numbers
   let numberObj = {
     'one': 1,
@@ -23,7 +29,7 @@ function transcriptionTextParser(string) {
   let count = 0;
   
   // split the string by each sentence
-  let strArr = string.split('. ');
+  let strArr = str.split('. ');
   
   // iterate through the new array
   for (let i = 0; i < strArr.length; i += 1) {
@@ -73,4 +79,23 @@ function capitalizeFirstLetter(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
+// Original text
 console.log(transcriptionTextParser(str))
+
+// Other test cases:
+// Solution should work if number starts off from 9 and increments
+console.log(transcriptionTextParser(`Patient presents today with several issues. Number nine BMI has increased by 10% since their
+last visit. Number next patient reports experiencing dizziness several times in the last two
+weeks. Number next patient has a persistent cough that hasn’t improved for last 4 weeks.`));
+
+// Solution should work if number starts off from one, next, next, and then four, next
+console.log(transcriptionTextParser(`Patient presents today with several issues. Number one BMI has increased by 10% since their
+last visit. Number next patient reports experiencing dizziness several times in the last two
+weeks. Number next patient has a persistent cough that hasn’t improved for last 4 weeks. Number four hello. Number next hi`));
+
+// Should check if input is a string
+console.log(transcriptionTextParser(5));
+
+// Should return empty string if input is empty
+console.log(transcriptionTextParser(''));
+
